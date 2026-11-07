@@ -3,27 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ชื่อของคุณ — ฟรีแลนซ์</title>
-<meta name="description" content="ฟรีแลนซ์ รับงานออกแบบและพัฒนาเว็บไซต์ ติดต่อได้เลย">
-<!-- แก้ข้อความใน <title> และ description ด้านบนให้เป็นของคุณ (มีผลกับ Google และการแชร์ลิงก์) -->
+<title>Komsan Yinghan — IT Infrastructure & Network Support</title>
+<meta name="description" content="Komsan Yinghan ช่างเทคนิคด้าน IT Infrastructure, ระบบเครือข่าย, เซิร์ฟเวอร์ และระบบไฟฟ้า จันทบุรี รับงานติดตั้ง ดูแล และแก้ไขปัญหาระบบไอที">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;700&family=IBM+Plex+Mono:wght@500&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f6f3ee; --surface:#fffdf9; --text:#1d1b18; --muted:#6b655c;
-    --line:#e3ddd2; --accent:#d4552a; --accent-ink:#fff;
+    --bg:#f4f6f8; --surface:#ffffff; --text:#14181d; --muted:#5d6670;
+    --line:#dfe4ea; --accent:#1a6fd8; --accent-ink:#fff; --ok:#2fa36b;
     --radius:14px; --max:1080px;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#141311; --surface:#1d1b18; --text:#f1ece4; --muted:#a59d91;
-      --line:#2e2b26; --accent:#ef7a4f; --accent-ink:#141311;
+      --bg:#0e1216; --surface:#161b21; --text:#e9eef3; --muted:#98a3ae;
+      --line:#252d36; --accent:#4d9bff; --accent-ink:#0e1216;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#141311; --surface:#1d1b18; --text:#f1ece4; --muted:#a59d91;
-    --line:#2e2b26; --accent:#ef7a4f; --accent-ink:#141311;
+    --bg:#0e1216; --surface:#161b21; --text:#e9eef3; --muted:#98a3ae;
+    --line:#252d36; --accent:#4d9bff; --accent-ink:#0e1216;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -31,8 +30,8 @@
   a{color:inherit}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
   .display{font-family:"Fraunces","IBM Plex Sans Thai",serif;font-weight:600;letter-spacing:-.01em}
+  .mono{font-family:"IBM Plex Mono",monospace}
 
-  /* nav */
   header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   nav{display:flex;align-items:center;justify-content:space-between;height:64px}
   .logo{font-weight:700;text-decoration:none;font-size:18px}
@@ -40,44 +39,61 @@
   .links{display:flex;gap:24px;list-style:none}
   .links a{text-decoration:none;color:var(--muted);font-size:15px}
   .links a:hover{color:var(--text)}
-  @media(max-width:640px){.links{display:none}}
+  @media(max-width:720px){.links{display:none}}
 
   .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;padding:12px 22px;border-radius:999px;font-weight:500;transition:transform .15s}
   .btn:hover{transform:translateY(-2px)}
   .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
 
   /* hero */
-  .hero{padding:96px 0 72px}
-  .tag{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);border:1px solid var(--line);padding:6px 14px;border-radius:999px;margin-bottom:28px}
-  .dot{width:8px;height:8px;border-radius:50%;background:#3bb273;box-shadow:0 0 0 4px color-mix(in srgb,#3bb273 25%,transparent)}
-  .hero h1{font-size:clamp(36px,6.5vw,68px);line-height:1.15;max-width:15ch;margin-bottom:24px}
+  .hero{padding:88px 0 64px}
+  .tag{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);border:1px solid var(--line);padding:6px 14px;border-radius:999px;margin-bottom:24px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 25%,transparent)}
+  .role{font-size:14px;letter-spacing:.08em;color:var(--accent);margin-bottom:12px}
+  .hero h1{font-size:clamp(36px,6.5vw,64px);line-height:1.15;max-width:16ch;margin-bottom:22px}
   .hero h1 em{font-style:normal;color:var(--accent)}
-  .hero p{font-size:19px;color:var(--muted);max-width:560px;margin-bottom:36px}
+  .hero p{font-size:19px;color:var(--muted);max-width:600px;margin-bottom:34px}
   .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:56px;max-width:720px}
+  .stat{border-left:2px solid var(--accent);padding-left:14px}
+  .stat b{display:block;font-size:26px;font-family:"Fraunces",serif}
+  .stat span{color:var(--muted);font-size:14px}
 
   section{padding:72px 0;border-top:1px solid var(--line)}
   .eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:10px}
-  h2{font-size:clamp(28px,4vw,40px);line-height:1.25;margin-bottom:40px;max-width:20ch}
+  h2{font-size:clamp(28px,4vw,40px);line-height:1.25;margin-bottom:40px;max-width:22ch}
 
   /* services */
   .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
-  .card .num{font-size:14px;color:var(--muted);margin-bottom:18px}
-  .card h3{font-size:20px;margin-bottom:8px}
+  .card .num{font-size:13px;color:var(--muted);margin-bottom:16px}
+  .card h3{font-size:19px;margin-bottom:8px}
   .card p{color:var(--muted);font-size:15.5px}
-  .price{margin-top:18px;font-weight:500}
+  .card .tools{margin-top:16px;font-size:13px;color:var(--accent)}
 
-  /* work */
-  .work{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-  .project{text-decoration:none;display:block}
-  .thumb{aspect-ratio:4/3;border-radius:var(--radius);border:1px solid var(--line);overflow:hidden;display:grid;place-items:center;font-size:14px;color:var(--muted);margin-bottom:14px;transition:transform .2s}
-  .thumb img{width:100%;height:100%;object-fit:cover}
-  .project:hover .thumb{transform:scale(1.015)}
-  .t1{background:linear-gradient(135deg,#f2c6a8,#d4552a)}
-  .t2{background:linear-gradient(135deg,#b9d4c8,#2f6f5e)}
-  .t3{background:linear-gradient(135deg,#cfc6ea,#4a3f8c)}
-  .project h3{font-size:18px}
-  .project p{color:var(--muted);font-size:15px}
+  /* experience */
+  .timeline{list-style:none;border-left:1px solid var(--line);margin-left:6px}
+  .timeline li{position:relative;padding:0 0 36px 28px}
+  .timeline li:last-child{padding-bottom:0}
+  .timeline li::before{content:"";position:absolute;left:-6px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+  .when{font-size:13px;color:var(--muted)}
+  .timeline h3{font-size:19px;margin:2px 0}
+  .where{color:var(--accent);font-size:15px;margin-bottom:6px}
+  .timeline p{color:var(--muted);font-size:15.5px;max-width:640px}
+
+  /* skills */
+  .skillgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .skillgrid h3{font-size:16px;margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+  .chips li{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:3px 12px;font-size:14px}
+
+  /* education */
+  .edu{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .edu .card h3{margin-bottom:4px}
+  .edu .meta{color:var(--accent);font-size:15px;margin-bottom:10px}
+  .edu ul{list-style:none;color:var(--muted);font-size:15px}
+  .edu ul li{padding:6px 0;border-top:1px dashed var(--line)}
+  .edu ul li:first-child{border-top:0}
 
   /* process */
   .steps{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));counter-reset:s}
@@ -87,24 +103,21 @@
   .step p{color:var(--muted);font-size:15px}
 
   /* about */
-  .about{display:grid;gap:40px;grid-template-columns:1fr 1.4fr;align-items:center}
+  .about{display:grid;gap:40px;grid-template-columns:1fr 1.5fr;align-items:center}
   @media(max-width:760px){.about{grid-template-columns:1fr}}
-  .photo{aspect-ratio:1;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);overflow:hidden;max-width:360px}
+  .photo{aspect-ratio:1;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),#0b3a75);display:grid;place-items:center;color:#fff;font-family:"Fraunces",serif;font-size:72px;overflow:hidden;max-width:320px}
   .photo img{width:100%;height:100%;object-fit:cover}
   .about p{color:var(--muted);margin-bottom:16px}
-  .skills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin-top:8px}
-  .skills li{border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:14px}
 
   /* contact */
-  .contact{background:var(--text);color:var(--bg);border-radius:24px;padding:56px 32px;text-align:center;margin:72px 0}
+  .contact{background:var(--text);color:var(--bg);border-radius:24px;padding:56px 24px;text-align:center;margin:72px 0}
   .contact h2{margin:0 auto 16px;color:var(--bg)}
-  .contact p{opacity:.75;max-width:460px;margin:0 auto 32px}
-  .contact .btn{background:var(--accent)}
+  .contact p{opacity:.75;max-width:480px;margin:0 auto 28px}
   .contact .btn.ghost{color:var(--bg);border-color:color-mix(in srgb,var(--bg) 30%,transparent)}
   .contact .cta{justify-content:center}
+  .contact .info{margin-top:24px;font-size:15px;opacity:.7}
 
   footer{padding:32px 0 48px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-  footer a{color:var(--muted)}
 </style>
 </head>
 <body>
@@ -112,13 +125,14 @@
 <header>
   <div class="wrap">
     <nav>
-      <a href="#" class="logo">ชื่อของคุณ<span>.</span></a>
+      <a href="#" class="logo">Komsan<span>.</span></a>
       <ul class="links">
         <li><a href="#services">บริการ</a></li>
-        <li><a href="#work">ผลงาน</a></li>
-        <li><a href="#about">เกี่ยวกับ</a></li>
+        <li><a href="#experience">ประสบการณ์</a></li>
+        <li><a href="#skills">ทักษะ</a></li>
+        <li><a href="#education">การศึกษา</a></li>
       </ul>
-      <a href="#contact" class="btn">จ้างงาน</a>
+      <a href="#contact" class="btn">ติดต่อ</a>
     </nav>
   </div>
 </header>
@@ -127,110 +141,182 @@
 
   <!-- ===== HERO ===== -->
   <div class="hero">
-    <div class="tag"><span class="dot"></span>ว่างรับงานใหม่</div>
-    <h1 class="display">เว็บไซต์ที่ช่วยให้ธุรกิจของคุณ <em>ขายได้จริง</em></h1>
-    <p>สวัสดีครับ ผม [ชื่อของคุณ] ฟรีแลนซ์ด้าน [ประเภทงาน] ช่วยธุรกิจขนาดเล็กและแบรนด์ส่วนตัวให้ดูน่าเชื่อถือบนออนไลน์</p>
+    <div class="tag"><span class="dot"></span>ว่างรับงาน · จันทบุรี</div>
+    <div class="role mono">DATA CENTER TECHNICIAN · IT INFRASTRUCTURE & NETWORK SUPPORT</div>
+    <h1 class="display">ระบบไอทีและเครือข่ายที่ <em>เสถียร ปลอดภัย</em> และมีเอกสารครบ</h1>
+    <p>สวัสดีครับ ผม Komsan Yinghan วิศวกรคอมพิวเตอร์ที่มีประสบการณ์ทั้งงาน IT Support, ระบบเครือข่าย, เซิร์ฟเวอร์ และระบบไฟฟ้า พร้อมช่วยดูแลระบบของคุณให้ทำงานได้ราบรื่นทุกวัน</p>
     <div class="cta">
       <a href="#contact" class="btn">คุยเรื่องงานกัน</a>
-      <a href="#work" class="btn ghost">ดูผลงาน</a>
+      <!-- อัปโหลดไฟล์ CV ชื่อ cv.pdf ไว้ใน repo เดียวกันเพื่อให้ปุ่มนี้ใช้งานได้ -->
+      <a href="cv.pdf" class="btn ghost" target="_blank" rel="noopener">ดาวน์โหลด CV</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>3.74</b><span>GPA วิศวกรรมคอมพิวเตอร์</span></div>
+      <div class="stat"><b>2015</b><span>เริ่มงานเทคนิคภาคสนาม</span></div>
+      <div class="stat"><b>5+</b><span>แบรนด์อุปกรณ์เครือข่ายที่ใช้งานได้</span></div>
     </div>
   </div>
 
   <!-- ===== SERVICES ===== -->
   <section id="services">
     <div class="eyebrow">บริการ</div>
-    <h2 class="display">สิ่งที่ผมช่วยคุณได้</h2>
+    <h2 class="display">งานที่ผมช่วยคุณได้</h2>
     <div class="grid">
       <div class="card">
-        <div class="num">01</div>
-        <h3>ออกแบบเว็บไซต์</h3>
-        <p>ออกแบบหน้าตาเว็บให้ตรงกับแบรนด์ ใช้งานง่ายทั้งบนมือถือและคอมพิวเตอร์</p>
-        <div class="price">เริ่มต้น ฿X,XXX</div>
+        <div class="num mono">01</div>
+        <h3>ระบบเครือข่าย</h3>
+        <p>ติดตั้ง ตั้งค่า และแก้ปัญหาการเชื่อมต่อ ทั้งสายและไร้สาย สำหรับสำนักงาน ร้านค้า และรีสอร์ท</p>
+        <div class="tools mono">MikroTik · Cisco · Huawei · Aruba · Ubiquiti</div>
       </div>
       <div class="card">
-        <div class="num">02</div>
-        <h3>พัฒนาเว็บไซต์</h3>
-        <p>เขียนโค้ดให้เว็บโหลดเร็ว ติดอันดับ Google ได้ดี และดูแลต่อได้ง่าย</p>
-        <div class="price">เริ่มต้น ฿X,XXX</div>
+        <div class="num mono">02</div>
+        <h3>เซิร์ฟเวอร์และ Virtualization</h3>
+        <p>ติดตั้งและดูแลเซิร์ฟเวอร์ Windows/Linux จัดการ VM และ container ให้ใช้ทรัพยากรคุ้มค่า</p>
+        <div class="tools mono">Windows Server · Ubuntu · Rocky · VMware · Proxmox · Docker</div>
       </div>
       <div class="card">
-        <div class="num">03</div>
-        <h3>ดูแลรายเดือน</h3>
-        <p>อัปเดตเนื้อหา แก้ไขปัญหา และปรับปรุงเว็บให้ทันสมัยอยู่เสมอ</p>
-        <div class="price">฿X,XXX / เดือน</div>
+        <div class="num mono">03</div>
+        <h3>Firewall และความปลอดภัย</h3>
+        <p>ตั้งค่า firewall แบ่งโซนเครือข่าย และวางนโยบายความปลอดภัยพื้นฐานสำหรับธุรกิจ</p>
+        <div class="tools mono">Fortinet · pfSense · F5</div>
+      </div>
+      <div class="card">
+        <div class="num mono">04</div>
+        <h3>IT Support และระบบไฟฟ้า</h3>
+        <p>ดูแลคอมพิวเตอร์ อัปเกรดฮาร์ดแวร์/ซอฟต์แวร์ ติดตั้งและตรวจเช็คระบบไฟฟ้าตามมาตรฐานความปลอดภัย</p>
+        <div class="tools mono">Windows 10/11 · Hardware · Electrical</div>
       </div>
     </div>
   </section>
 
-  <!-- ===== WORK ===== -->
-  <!-- ใส่รูปผลงาน: เปลี่ยน <div class="thumb t1">…</div> เป็น <div class="thumb"><img src="images/project1.jpg" alt="ชื่อโปรเจกต์"></div> -->
-  <section id="work">
-    <div class="eyebrow">ผลงาน</div>
-    <h2 class="display">โปรเจกต์ที่ผ่านมา</h2>
-    <div class="work">
-      <a class="project" href="#">
-        <div class="thumb t1">รูปผลงาน 1</div>
-        <h3>ชื่อโปรเจกต์ที่ 1</h3>
-        <p>ลูกค้า · ประเภทงาน · ผลลัพธ์ที่ได้</p>
-      </a>
-      <a class="project" href="#">
-        <div class="thumb t2">รูปผลงาน 2</div>
-        <h3>ชื่อโปรเจกต์ที่ 2</h3>
-        <p>ลูกค้า · ประเภทงาน · ผลลัพธ์ที่ได้</p>
-      </a>
-      <a class="project" href="#">
-        <div class="thumb t3">รูปผลงาน 3</div>
-        <h3>ชื่อโปรเจกต์ที่ 3</h3>
-        <p>ลูกค้า · ประเภทงาน · ผลลัพธ์ที่ได้</p>
-      </a>
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience">
+    <div class="eyebrow">ประสบการณ์</div>
+    <h2 class="display">ประสบการณ์การทำงาน</h2>
+    <ul class="timeline">
+      <li>
+        <div class="when mono">2020 – 2022</div>
+        <h3>IT Support</h3>
+        <div class="where">Santhiya Tree Koh Chang Resort</div>
+        <p>ดูแลอุปกรณ์ผู้ใช้ ระบบไอทีของธุรกิจ และการเชื่อมต่อเครือข่าย วิเคราะห์ปัญหาฮาร์ดแวร์และซอฟต์แวร์ พร้อมบำรุงรักษาและอัปเกรดอุปกรณ์เพื่อให้งานประจำวันราบรื่น</p>
+      </li>
+      <li>
+        <div class="when mono">2018 – 2019</div>
+        <h3>Electrician</h3>
+        <div class="where">AANA Resort & Spa, Koh Chang</div>
+        <p>ติดตั้ง ตรวจสอบ และซ่อมแซมระบบไฟฟ้า พร้อมตรวจความปลอดภัยตามรอบ</p>
+      </li>
+      <li>
+        <div class="when mono">2017 – 2018</div>
+        <h3>Operations Technician</h3>
+        <div class="where">Master Tech International Co., Ltd.</div>
+        <p>ควบคุมและบำรุงรักษาเครื่องจักรอุตสาหกรรม ตรวจสอบคุณภาพและความปลอดภัย</p>
+      </li>
+      <li>
+        <div class="when mono">2015 – 2016</div>
+        <h3>Installation Technician</h3>
+        <div class="where">Sanyu Elevator Co., Ltd.</div>
+        <p>ติดตั้งและทดสอบชิ้นส่วนระบบลิฟต์ แก้ไขปัญหาและซ่อมแซมหน้างาน</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <div class="eyebrow">ทักษะ</div>
+    <h2 class="display">ทักษะทางเทคนิค</h2>
+    <div class="skillgrid">
+      <div class="card">
+        <h3>Networking</h3>
+        <ul class="chips"><li>TCP/IP</li><li>Routing & Switching</li><li>Troubleshooting</li><li>Cisco</li><li>MikroTik</li><li>Huawei</li><li>Aruba</li><li>Ubiquiti</li></ul>
+      </div>
+      <div class="card">
+        <h3>Systems</h3>
+        <ul class="chips"><li>Windows 10/11</li><li>Windows Server 2019/2022</li><li>Ubuntu</li><li>CentOS</li><li>Rocky Linux</li></ul>
+      </div>
+      <div class="card">
+        <h3>Virtualization & Security</h3>
+        <ul class="chips"><li>VMware</li><li>Proxmox</li><li>Docker</li><li>Fortinet</li><li>pfSense</li><li>F5</li><li>Python (basic)</li></ul>
+      </div>
+      <div class="card">
+        <h3>Electrical & Field Operations</h3>
+        <ul class="chips"><li>Installation</li><li>Inspection</li><li>Maintenance</li><li>Safety Checks</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education">
+    <div class="eyebrow">การศึกษาและการอบรม</div>
+    <h2 class="display">พื้นฐานที่แน่น</h2>
+    <div class="edu">
+      <div class="card">
+        <h3>วศ.บ. วิศวกรรมคอมพิวเตอร์</h3>
+        <div class="meta">มหาวิทยาลัยราชภัฏรำไพพรรณี · จบ 21 เม.ย. 2026 · GPA 3.74</div>
+        <ul>
+          <li>Data Center Management</li>
+          <li>Network System Design · Network Performance Analysis</li>
+          <li>System Virtualization and Cloud Management</li>
+          <li>Firewall Security · Computer Network Security</li>
+          <li>Routing and Switching Essentials</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>การอบรมและการทดสอบ</h3>
+        <div class="meta">ปวส. ไฟฟ้ากำลังและอิเล็กทรอนิกส์อุตสาหกรรม · วิทยาลัยอาชีวศึกษาจุฬามณี (2013–2015)</div>
+        <ul>
+          <li>MikroTik Networking and Security</li>
+          <li>Huawei HCIA Datacom, Security และ WLAN (หลักสูตรอบรม)</li>
+          <li>Cisco Networking Academy</li>
+          <li>IC3 Digital Literacy — ผ่าน (ธ.ค. 2024)</li>
+          <li>University English EXIT — ผ่าน (มี.ค. 2025)</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- ===== PROCESS ===== -->
   <section>
     <div class="eyebrow">ขั้นตอนการทำงาน</div>
-    <h2 class="display">ทำงานด้วยกันง่ายๆ</h2>
+    <h2 class="display">ทำงานเป็นระบบ ตรวจสอบได้</h2>
     <div class="steps">
-      <div class="step"><h3>พูดคุย</h3><p>เล่าความต้องการ เป้าหมาย และงบประมาณ</p></div>
-      <div class="step"><h3>เสนอราคา</h3><p>ส่งขอบเขตงาน ราคา และระยะเวลาให้ชัดเจน</p></div>
-      <div class="step"><h3>ลงมือทำ</h3><p>อัปเดตความคืบหน้าและแก้ไขตามคอมเมนต์</p></div>
-      <div class="step"><h3>ส่งมอบ</h3><p>ส่งงานพร้อมสอนใช้งาน และดูแลหลังส่งมอบ</p></div>
+      <div class="step"><h3>สำรวจ</h3><p>รับฟังปัญหาและตรวจระบบหน้างานหรือออนไลน์</p></div>
+      <div class="step"><h3>วางแผน</h3><p>เสนอแนวทาง อุปกรณ์ ราคา และระยะเวลาให้ชัดเจน</p></div>
+      <div class="step"><h3>ติดตั้งและทดสอบ</h3><p>ลงมือทำโดยคำนึงถึงความปลอดภัย และทดสอบทุกจุดก่อนส่งมอบ</p></div>
+      <div class="step"><h3>ส่งมอบพร้อมเอกสาร</h3><p>สรุปการตั้งค่าและผังระบบไว้ให้ ดูแลต่อได้ง่าย</p></div>
     </div>
   </section>
 
   <!-- ===== ABOUT ===== -->
-  <!-- ใส่รูปตัวเอง: เปลี่ยนข้อความ "รูปของคุณ" เป็น <img src="images/me.jpg" alt="ชื่อของคุณ"> -->
+  <!-- ใส่รูปตัวเอง: เปลี่ยน KY เป็น <img src="images/me.jpg" alt="Komsan Yinghan"> -->
   <section id="about">
     <div class="about">
-      <div class="photo">รูปของคุณ</div>
+      <div class="photo">KY</div>
       <div>
         <div class="eyebrow">เกี่ยวกับผม</div>
-        <h2 class="display" style="margin-bottom:20px">สวัสดีครับ ผม [ชื่อของคุณ]</h2>
-        <p>เล่าสั้นๆ ว่าคุณเป็นใคร ทำงานด้านนี้มากี่ปี เคยร่วมงานกับใคร และอะไรทำให้คุณต่างจากคนอื่น</p>
-        <p>ประจำอยู่ที่ [จังหวัด] รับงานทั่วประเทศแบบออนไลน์</p>
-        <ul class="skills">
-          <li>ทักษะ 1</li><li>ทักษะ 2</li><li>ทักษะ 3</li><li>ทักษะ 4</li>
-        </ul>
+        <h2 class="display" style="margin-bottom:20px">Komsan Yinghan</h2>
+        <p>ผมเริ่มต้นจากงานช่างไฟฟ้าและงานติดตั้งภาคสนาม ก่อนมาทำงาน IT Support ที่รีสอร์ทบนเกาะช้าง และศึกษาต่อจนจบวิศวกรรมคอมพิวเตอร์ ทำให้เข้าใจทั้งฝั่งฮาร์ดแวร์ ระบบไฟฟ้า และระบบเครือข่าย</p>
+        <p>ผมให้ความสำคัญกับระบบที่เสถียร ปลอดภัย และมีเอกสารประกอบครบถ้วน ปัจจุบันอยู่ที่จันทบุรี รับงานในพื้นที่ภาคตะวันออกและงานดูแลระยะไกล</p>
       </div>
     </div>
   </section>
 
   <!-- ===== CONTACT ===== -->
-  <!-- แก้อีเมลและ LINE ID ด้านล่าง -->
   <div class="contact" id="contact">
-    <h2 class="display">มีโปรเจกต์อยู่ในใจไหม?</h2>
-    <p>ทักมาคุยรายละเอียดได้เลย ตอบกลับภายใน 24 ชั่วโมง</p>
+    <h2 class="display">ระบบมีปัญหา หรืออยากวางระบบใหม่?</h2>
+    <p>ทักมาเล่ารายละเอียดได้เลยครับ ยินดีให้คำปรึกษา</p>
     <div class="cta">
-      <a class="btn" href="mailto:you@example.com">ส่งอีเมล</a>
-      <a class="btn ghost" href="https://line.me/ti/p/~yourlineid" target="_blank" rel="noopener">แอด LINE</a>
+      <a class="btn" href="mailto:sanfong0010@gmail.com">ส่งอีเมล</a>
+      <a class="btn ghost" href="tel:0819085472">โทร 081-908-5472</a>
     </div>
+    <div class="info mono">sanfong0010@gmail.com · Chanthaburi, Thailand</div>
   </div>
 
 </main>
 
 <footer class="wrap">
-  <span>© <span id="y"></span> ชื่อของคุณ</span>
-  <span><a href="#">Facebook</a> · <a href="#">Instagram</a> · <a href="#">LinkedIn</a></span>
+  <span>© <span id="y"></span> Komsan Yinghan</span>
+  <span>IT Infrastructure & Network Support</span>
 </footer>
 
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>

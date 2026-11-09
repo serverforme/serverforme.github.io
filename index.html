@@ -12,17 +12,17 @@
   :root{
     --bg:#f4f6f8; --surface:#ffffff; --text:#14181d; --muted:#5d6670;
     --line:#dfe4ea; --accent:#1a6fd8; --accent-ink:#fff; --ok:#2fa36b;
-    --radius:14px; --max:1080px;
+    --accent2:#10b3a3; --radius:14px; --max:1080px;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
       --bg:#0e1216; --surface:#161b21; --text:#e9eef3; --muted:#98a3ae;
-      --line:#252d36; --accent:#4d9bff; --accent-ink:#0e1216;
+      --line:#252d36; --accent:#4d9bff; --accent-ink:#0e1216; --accent2:#3ee0c0;
     }
   }
   :root[data-theme="dark"]{
     --bg:#0e1216; --surface:#161b21; --text:#e9eef3; --muted:#98a3ae;
-    --line:#252d36; --accent:#4d9bff; --accent-ink:#0e1216;
+    --line:#252d36; --accent:#4d9bff; --accent-ink:#0e1216; --accent2:#3ee0c0;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -51,7 +51,10 @@
   .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 25%,transparent)}
   .role{font-size:14px;letter-spacing:.08em;color:var(--accent);margin-bottom:12px}
   .hero h1{font-size:clamp(36px,6.5vw,64px);line-height:1.15;max-width:16ch;margin-bottom:22px}
-  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero h1{padding-block:.08em}
+  .hero h1 em{font-style:normal;color:var(--accent);background:linear-gradient(100deg,var(--accent),var(--accent2),var(--accent));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 8s ease-in-out infinite alternate}
+  @keyframes shine{from{background-position:0% 50%}to{background-position:100% 50%}}
+  @media (prefers-reduced-motion:reduce){.hero h1 em{animation:none}}
   .hero p{font-size:19px;color:var(--muted);max-width:600px;margin-bottom:34px}
   .cta{display:flex;gap:12px;flex-wrap:wrap}
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:56px;max-width:720px}
@@ -81,6 +84,9 @@
   .where{color:var(--accent);font-size:15px;margin-bottom:6px}
   .timeline p{color:var(--muted);font-size:15.5px;max-width:640px}
 
+  .sub{font-size:18px;font-weight:600;margin:0 0 14px}
+  .sub.second{margin-top:36px}
+
   /* skills */
   .skillgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
   .skillgrid h3{font-size:16px;margin-bottom:12px}
@@ -95,6 +101,21 @@
   .edu ul li{padding:6px 0;border-top:1px dashed var(--line)}
   .edu ul li:first-child{border-top:0}
 
+  /* certificates */
+  .hl{border-top:3px solid var(--accent)}
+  .hl .big{font-size:20px;font-weight:700;margin-bottom:4px}
+  .hl .meta{color:var(--accent);font-size:15px;margin-bottom:8px}
+  .certs{margin-top:16px}
+  /* project */
+  .project p{margin-bottom:20px}
+  .pgrid{display:grid;gap:16px 32px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:20px}
+  .pgrid h3{font-size:16px;margin-bottom:6px}
+  .pgrid ul{list-style:none;color:var(--muted);font-size:15px}
+  .pgrid ul li{padding:5px 0;border-top:1px dashed var(--line)}
+  .pgrid ul li:first-child{border-top:0}
+  .project .plink{margin:20px 0 0}
+  .view{color:var(--accent);font-size:14px;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+
   /* process */
   .steps{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));counter-reset:s}
   .step{counter-increment:s}
@@ -106,8 +127,12 @@
   .about{display:grid;gap:40px;grid-template-columns:1fr 1.5fr;align-items:center}
   @media(max-width:760px){.about{grid-template-columns:1fr}}
   .photo{aspect-ratio:1;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),#0b3a75);display:grid;place-items:center;color:#fff;font-family:"Fraunces",serif;font-size:72px;overflow:hidden;max-width:320px}
-  .photo img{width:100%;height:100%;object-fit:cover}
+  .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 15%}
   .about p{color:var(--muted);margin-bottom:16px}
+  .hero .about{margin:8px 0 40px;padding:32px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .hero .about p{font-size:17px;max-width:none}
+  .hero .about .eyebrow{margin-bottom:12px}
+  .hero .about p.lead{color:var(--text);font-size:19px;font-weight:500}
 
   /* contact */
   .contact{background:var(--text);color:var(--bg);border-radius:24px;padding:56px 24px;text-align:center;margin:72px 0}
@@ -116,6 +141,20 @@
   .contact .btn.ghost{color:var(--bg);border-color:color-mix(in srgb,var(--bg) 30%,transparent)}
   .contact .cta{justify-content:center}
   .contact .info{margin-top:24px;font-size:15px;opacity:.7}
+
+
+  /* pdf viewer */
+  dialog.pdfmodal{border:0;padding:0;border-radius:var(--radius);background:var(--surface);color:var(--text);width:min(960px,94vw);height:min(88vh,900px);max-width:none;max-height:none;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.4)}
+  dialog.pdfmodal[open]{display:flex;flex-direction:column}
+  dialog.pdfmodal::backdrop{background:rgba(8,12,16,.72);backdrop-filter:blur(3px)}
+  .pdfbar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:15px}
+  .pdfbar b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+  .pdfbar a,.pdfbar button{font:inherit;font-size:14px;color:var(--text);background:transparent;border:1px solid var(--line);border-radius:999px;padding:4px 14px;cursor:pointer;text-decoration:none;white-space:nowrap}
+  .pdfbar a:hover,.pdfbar button:hover{border-color:var(--accent);color:var(--accent)}
+  .pdfmodal iframe{flex:1;width:100%;border:0;background:#fff}
+  .pdfmodal .imgwrap{flex:1;overflow:auto;display:flex;align-items:flex-start;justify-content:center;padding:16px;background:#fff}
+  .pdfmodal .imgwrap img{max-width:100%;height:auto;display:block}
+  .pdfmodal [hidden]{display:none !important}
 
   footer{padding:32px 0 48px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 </style>
@@ -127,10 +166,11 @@
     <nav>
       <a href="#" class="logo">Komsan<span>.</span></a>
       <ul class="links">
-        <li><a href="#services">บริการ</a></li>
-        <li><a href="#experience">ประสบการณ์</a></li>
-        <li><a href="#skills">ทักษะ</a></li>
         <li><a href="#education">การศึกษา</a></li>
+        <li><a href="#skills">ทักษะ</a></li>
+        <li><a href="#certs">ใบรับรอง</a></li>
+        <li><a href="#project">โปรเจกต์</a></li>
+        <li><a href="#experience">ประสบการณ์</a></li>
       </ul>
       <a href="#contact" class="btn">ติดต่อ</a>
     </nav>
@@ -141,10 +181,19 @@
 
   <!-- ===== HERO ===== -->
   <div class="hero">
-    <div class="tag"><span class="dot"></span>ว่างรับงาน · จันทบุรี</div>
+    <div class="tag">ตัวตนและผลงาน</div>
     <div class="role mono">DATA CENTER TECHNICIAN · IT INFRASTRUCTURE & NETWORK SUPPORT</div>
-    <h1 class="display">ระบบไอทีและเครือข่ายที่ <em>เสถียร ปลอดภัย</em> และมีเอกสารครบ</h1>
-    <p>สวัสดีครับ ผม Komsan Yinghan วิศวกรคอมพิวเตอร์ที่มีประสบการณ์ทั้งงาน IT Support, ระบบเครือข่าย, เซิร์ฟเวอร์ และระบบไฟฟ้า พร้อมช่วยดูแลระบบของคุณให้ทำงานได้ราบรื่นทุกวัน</p>
+    <h1 class="display">ยินดีต้อนรับสู่<em>เว็บไซต์แสดงผลงานและโปรไฟล์</em>ของผม</h1>
+    <div class="about" id="about">
+      <div class="photo"><img src="images/me.jpg" alt="Komsan Yinghan"></div>
+      <div>
+        <div class="eyebrow">เกี่ยวกับผม</div>
+        <p class="lead">สวัสดีครับ ผม Komsan Yinghan วิศวกรคอมพิวเตอร์ที่มีประสบการณ์ทั้งงาน IT Support, ระบบเครือข่าย, เซิร์ฟเวอร์ และระบบไฟฟ้า</p>
+        <p>ผมจบ ปวส. สาขาไฟฟ้ากำลังและอิเล็กทรอนิกส์อุตสาหกรรม แล้วเริ่มจากงานช่างไฟฟ้าและงานติดตั้งภาคสนามตั้งแต่ปี 2015 ก่อนก้าวมาเป็น IT Support ที่รีสอร์ทบนเกาะช้าง แล้วเรียนต่อจนจบวิศวกรรมคอมพิวเตอร์ (GPA 3.74) จึงเข้าใจระบบตั้งแต่ฮาร์ดแวร์ ระบบไฟฟ้า ไปจนถึงเครือข่ายและเซิร์ฟเวอร์</p>
+        <p>ด้านเครือข่ายและความปลอดภัยไซเบอร์ ผมได้เข้าร่วมการแข่งขัน Huawei ICT Competition สาย Network และมีใบรับรอง MikroTik, TPQI และหลักสูตรจาก สกมช. ที่ตรวจสอบได้</p>
+        <p>ผมให้ความสำคัญกับระบบที่เสถียร ปลอดภัย และมีเอกสารส่งมอบครบถ้วน ปัจจุบันอยู่ที่จันทบุรี รับงานดูแลระยะไกล</p>
+      </div>
+    </div>
     <div class="cta">
       <a href="#contact" class="btn">คุยเรื่องงานกัน</a>
       <!-- อัปโหลดไฟล์ CV ชื่อ cv.pdf ไว้ใน repo เดียวกันเพื่อให้ปุ่มนี้ใช้งานได้ -->
@@ -153,39 +202,166 @@
     <div class="stats">
       <div class="stat"><b>3.74</b><span>GPA วิศวกรรมคอมพิวเตอร์</span></div>
       <div class="stat"><b>2015</b><span>เริ่มงานเทคนิคภาคสนาม</span></div>
-      <div class="stat"><b>5+</b><span>แบรนด์อุปกรณ์เครือข่ายที่ใช้งานได้</span></div>
+      <div class="stat"><b>5+</b><span>แบรนด์อุปกรณ์เครือข่ายที่ใช้งานจริง</span></div>
     </div>
   </div>
 
   <!-- ===== SERVICES ===== -->
-  <section id="services">
-    <div class="eyebrow">บริการ</div>
-    <h2 class="display">งานที่ผมช่วยคุณได้</h2>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education">
+    <div class="eyebrow">การศึกษา</div>
+    <h2 class="display">พื้นฐานด้านวิศวกรรมและไฟฟ้า</h2>
+    <div class="edu">
+      <div class="card">
+        <h3>วศ.บ. วิศวกรรมคอมพิวเตอร์</h3>
+        <div class="meta">มหาวิทยาลัยราชภัฏรำไพพรรณี · จบ 21 เม.ย. 2026 · GPA 3.74</div>
+        <ul>
+          <li>Data Center Management</li>
+          <li>Network System Design · Network Performance Analysis</li>
+          <li>System Virtualization and Cloud Management</li>
+          <li>Firewall Security · Computer Network Security</li>
+          <li>Routing and Switching Essentials</li>
+          <li>ใบแสดงผลการเรียน (Official Transcript) <a class="view" href="project/transcript.pdf" target="_blank" rel="noopener">ดูเอกสาร</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>ปวส. ไฟฟ้ากำลังและอิเล็กทรอนิกส์อุตสาหกรรม</h3>
+        <div class="meta">Chulamani Vocational College · 2013 – 2015</div>
+        <ul>
+          <li>Industrial Electrical Power and Electronics</li>
+          <li>ต่อยอดสู่งานจริง: ช่างติดตั้งลิฟต์ (Sanyu Elevator, 2015–2016)</li>
+          <li>ช่างไฟฟ้า (AANA Resort &amp; Spa, 2018–2019) ติดตั้ง ตรวจสอบ ซ่อมแซมระบบไฟฟ้า และตรวจความปลอดภัยตามรอบ</li>
+          <li>ทักษะภาคสนาม: Installation · Inspection · Maintenance · Safety Checks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <div class="eyebrow">ทักษะ</div>
+    <h2 class="display">ทักษะทางเทคนิค</h2>
+    <h3 class="sub">เครื่องมือและเทคโนโลยี</h3>
+    <div class="skillgrid">
+      <div class="card">
+        <h3>Networking</h3>
+        <ul class="chips"><li>TCP/IP</li><li>Routing & Switching</li><li>Troubleshooting</li><li>Cisco</li><li>MikroTik</li><li>Huawei</li><li>Aruba</li><li>Ubiquiti</li></ul>
+      </div>
+      <div class="card">
+        <h3>Systems</h3>
+        <ul class="chips"><li>Windows 10/11</li><li>Windows Server 2019/2022</li><li>Ubuntu</li><li>CentOS</li><li>Rocky Linux</li></ul>
+      </div>
+      <div class="card">
+        <h3>Virtualization & Security</h3>
+        <ul class="chips"><li>VMware</li><li>Proxmox</li><li>Docker</li><li>Fortinet</li><li>pfSense</li><li>F5</li><li>Python (basic)</li></ul>
+      </div>
+      <div class="card">
+        <h3>Electrical & Field Operations</h3>
+        <ul class="chips"><li>Installation</li><li>Inspection</li><li>Maintenance</li><li>Safety Checks</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATES ===== -->
+  <section id="certs">
+    <div class="eyebrow">ใบรับรองและรางวัล</div>
+    <h2 class="display">รายการใบรับรอง</h2>
     <div class="grid">
+      <div class="card hl">
+        <div class="big">เข้าร่วมการแข่งขันสาย Network</div>
+        <div class="meta">Huawei ICT Competition 2023–2024 Thailand · รอบคัดเลือก · ธ.ค. 2023</div>
+        <p>ตัวแทนมหาวิทยาลัยราชภัฏรำไพพรรณี ในการแข่งขันด้านเครือข่ายของ Huawei ICT Academy <a class="view" href="Certificate/huawei-ict-competition-1st-network.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></p>
+      </div>
+      <div class="card hl">
+        <div class="big">คุณวุฒิวิชาชีพ ระดับ 3</div>
+        <div class="meta">สถาบันคุณวุฒิวิชาชีพ (TPQI) · ก.พ. 2024</div>
+        <p>อาชีพช่างสนับสนุนด้านเทคนิค สาขาความมั่นคงปลอดภัยทางดิจิทัลและส่วนบุคคล ผ่านการประเมินการติดตั้งอุปกรณ์เครือข่าย <a class="view" href="Certificate/tpqi-qualification.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></p>
+      </div>
+    </div>
+    <div class="edu certs">
       <div class="card">
-        <div class="num mono">01</div>
         <h3>ระบบเครือข่าย</h3>
-        <p>ติดตั้ง ตั้งค่า และแก้ปัญหาการเชื่อมต่อ ทั้งสายและไร้สาย สำหรับสำนักงาน ร้านค้า และรีสอร์ท</p>
-        <div class="tools mono">MikroTik · Cisco · Huawei · Aruba · Ubiquiti</div>
+        <div class="meta">ใบรับรองจากผู้ผลิตและสถาบันฝึกอบรม</div>
+        <ul>
+          <li>MikroTik Certified Network Associate (MTCNA) — ม.ค. 2023 <a class="view" href="Certificate/mikrotik-mtcna.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>MikroTik Certified Security Engineer (MTCSE) — ต.ค. 2022 <a class="view" href="Certificate/mikrotik-mtcse.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>Cisco Networking Academy: Networking Devices and Initial Configuration — ก.พ. 2024 <a class="view" href="Certificate/cisco-networking-devices.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>LINK Campus Cabling &amp; Networking (LCCN) — ส.ค. 2022 <a class="view" href="Certificate/link-lccn.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+        </ul>
       </div>
       <div class="card">
-        <div class="num mono">02</div>
-        <h3>เซิร์ฟเวอร์และ Virtualization</h3>
-        <p>ติดตั้งและดูแลเซิร์ฟเวอร์ Windows/Linux จัดการ VM และ container ให้ใช้ทรัพยากรคุ้มค่า</p>
-        <div class="tools mono">Windows Server · Ubuntu · Rocky · VMware · Proxmox · Docker</div>
+        <h3>ความมั่นคงปลอดภัยไซเบอร์</h3>
+        <div class="meta">สำนักงานคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติ (สกมช.)</div>
+        <ul>
+          <li>Cybersecurity Professional Course (20 ชม.) — ต.ค. 2025 <a class="view" href="Certificate/ncsa-cybersecurity-professional.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>Cybersecurity Foundation Course (21 ชม.) — ก.ย. 2025 <a class="view" href="Certificate/ncsa-cybersecurity-foundation.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>CTF Boot Camp (สกมช. / THNCA) — พ.ค. 2025 <a class="view" href="Certificate/ncsa-ctf-boot-camp.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>Basic Cybersecurity (NCSA MOOC) — ก.ย. 2024 <a class="view" href="Certificate/ncsa-basic-cybersecurity.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>สัมมนา How to Become a Penetration Tester? — ก.พ. 2024 <a class="view" href="Certificate/seminar-penetration-tester.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+        </ul>
       </div>
       <div class="card">
-        <div class="num mono">03</div>
-        <h3>Firewall และความปลอดภัย</h3>
-        <p>ตั้งค่า firewall แบ่งโซนเครือข่าย และวางนโยบายความปลอดภัยพื้นฐานสำหรับธุรกิจ</p>
-        <div class="tools mono">Fortinet · pfSense · F5</div>
+        <h3>การแข่งขันและกิจกรรม</h3>
+        <div class="meta">ตัวแทนมหาวิทยาลัยราชภัฏรำไพพรรณี</div>
+        <ul>
+          <li>Thailand Cyber Talent 2025 — เกียรติบัตรเชิดชู ส.ค. 2025 <a class="view" href="Certificate/thailand-cyber-talent-2025.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>Thailand Cyber Top Talent 2023 (สกมช. × Huawei) — ก.ย. 2023 <a class="view" href="Certificate/thailand-cyber-top-talent-2023.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+        </ul>
       </div>
       <div class="card">
-        <div class="num mono">04</div>
-        <h3>IT Support และระบบไฟฟ้า</h3>
-        <p>ดูแลคอมพิวเตอร์ อัปเกรดฮาร์ดแวร์/ซอฟต์แวร์ ติดตั้งและตรวจเช็คระบบไฟฟ้าตามมาตรฐานความปลอดภัย</p>
-        <div class="tools mono">Windows 10/11 · Hardware · Electrical</div>
+        <h3>F5 Application Delivery &amp; Security</h3>
+        <div class="meta">F5, Inc. · พ.ค. 2025</div>
+        <ul>
+          <li>BIG-IP: BIG-IP Setup (9 ชม. 32 นาที) — พ.ค. 2025 <a class="view" href="Certificatepng/f5-big-ip-setup.png" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>F5 Distributed Cloud Technical Overview 101 — Certificate of Technical Achievement · พ.ค. 2025 <a class="view" href="Certificatepng/f5-distributed-cloud-technical-overview-101.png" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>Getting Started with BIG-IP — พ.ค. 2025 <a class="view" href="Certificatepng/f5-getting-started-big-ip.png" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>Getting Started with Local Traffic Manager (LTM) — พ.ค. 2025 <a class="view" href="Certificatepng/f5-getting-started-ltm.png" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>Getting Started with BIG-IP Advanced WAF — พ.ค. 2025 <a class="view" href="Certificatepng/f5-getting-started-advanced-waf.png" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>Getting Started with BIG-IQ — พ.ค. 2025 <a class="view" href="Certificatepng/f5-getting-started-big-iq.png" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>Getting Started with F5 Distributed Cloud Services — พ.ค. 2025 <a class="view" href="Certificatepng/f5-getting-started-distributed-cloud.png" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>Getting Started with F5 Silverline Services — พ.ค. 2025 <a class="view" href="Certificatepng/f5-getting-started-silverline.png" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+        </ul>
       </div>
+      <div class="card">
+        <h3>มาตรฐานอาชีพและอื่น ๆ</h3>
+        <div class="meta">Technical Support Technician ระดับ 3 (TPQI)</div>
+        <ul>
+          <li>ติดตั้งอุปกรณ์ที่ใช้ในเครือข่าย — ผ่านการรับรองสมรรถนะ <a class="view" href="Certificate/tpqi-competency.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>ทดสอบการติดตั้งอุปกรณ์เครือข่ายเบื้องต้น — ผ่านการรับรองสมรรถนะ <a class="view" href="Certificate/tpqi-competency.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+          <li>AI for ALL (ITM, Mahidol University) — ก.พ. 2024 <a class="view" href="Certificate/ai-for-all.pdf" target="_blank" rel="noopener">ดูใบรับรอง</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECT ===== -->
+  <section id="project">
+    <div class="eyebrow">โปรเจกต์</div>
+    <h2 class="display">งานวิจัยและผลงาน</h2>
+    <div class="card hl project">
+      <div class="big">F5VisionLTM</div>
+      <div class="meta">งานวิจัยวิชาสหกิจศึกษาทางวิศวกรรมคอมพิวเตอร์ · มหาวิทยาลัยราชภัฏรำไพพรรณี · ภาคเรียนที่ 1/2568</div>
+      <p>ระบบดึง Log ของ F5 BIG-IP LTM โดยตรงผ่าน iControl REST API แล้วแสดงผลบนแดชบอร์ดที่ใช้งานง่าย ทั้งสถานะ Virtual Server, Pool, Node และข้อมูลการร้องขอไปยัง Web Application Server ในรูปแบบกราฟ เพื่อให้ผู้ดูแลระบบวิเคราะห์และแก้ปัญหาได้เร็วกว่าหน้า Log แบบเดิมของ BIG-IP</p>
+      <div class="pgrid">
+        <div>
+          <h3>สิ่งที่พัฒนา</h3>
+          <ul>
+            <li>Backend ด้วย FastAPI เชื่อมต่อ BIG-IP (TMOS v17.1.2) ผ่าน REST API</li>
+            <li>ยืนยันตัวตนด้วย JWT และจัดการผู้ใช้ด้วย SQLite</li>
+            <li>Frontend แบบ Dark Mode พร้อมระบบล็อกอินและแดชบอร์ดกราฟ</li>
+          </ul>
+        </div>
+        <div>
+          <h3>ผลการทดสอบ</h3>
+          <ul>
+            <li>Log จาก Local และ Syslog สอดคล้องกัน 100%</li>
+            <li>ประเมินการใช้งานด้วย SUS ได้ 81.25/100 (ระดับ Excellent)</li>
+          </ul>
+        </div>
+      </div>
+      <ul class="chips"><li>F5 BIG-IP LTM</li><li>iControl REST</li><li>Python</li><li>FastAPI</li><li>JWT</li><li>SQLite</li><li>React</li><li>Syslog</li></ul>
+      <p class="plink"><a class="view" data-title="F5VisionLTM — รายงานงานวิจัย" href="project/F5VisionLTM.pdf" target="_blank" rel="noopener">อ่านรายงานฉบับเต็ม (PDF)</a></p>
     </div>
   </section>
 
@@ -221,64 +397,10 @@
     </ul>
   </section>
 
-  <!-- ===== SKILLS ===== -->
-  <section id="skills">
-    <div class="eyebrow">ทักษะ</div>
-    <h2 class="display">ทักษะทางเทคนิค</h2>
-    <div class="skillgrid">
-      <div class="card">
-        <h3>Networking</h3>
-        <ul class="chips"><li>TCP/IP</li><li>Routing & Switching</li><li>Troubleshooting</li><li>Cisco</li><li>MikroTik</li><li>Huawei</li><li>Aruba</li><li>Ubiquiti</li></ul>
-      </div>
-      <div class="card">
-        <h3>Systems</h3>
-        <ul class="chips"><li>Windows 10/11</li><li>Windows Server 2019/2022</li><li>Ubuntu</li><li>CentOS</li><li>Rocky Linux</li></ul>
-      </div>
-      <div class="card">
-        <h3>Virtualization & Security</h3>
-        <ul class="chips"><li>VMware</li><li>Proxmox</li><li>Docker</li><li>Fortinet</li><li>pfSense</li><li>F5</li><li>Python (basic)</li></ul>
-      </div>
-      <div class="card">
-        <h3>Electrical & Field Operations</h3>
-        <ul class="chips"><li>Installation</li><li>Inspection</li><li>Maintenance</li><li>Safety Checks</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== EDUCATION ===== -->
-  <section id="education">
-    <div class="eyebrow">การศึกษาและการอบรม</div>
-    <h2 class="display">พื้นฐานที่แน่น</h2>
-    <div class="edu">
-      <div class="card">
-        <h3>วศ.บ. วิศวกรรมคอมพิวเตอร์</h3>
-        <div class="meta">มหาวิทยาลัยราชภัฏรำไพพรรณี · จบ 21 เม.ย. 2026 · GPA 3.74</div>
-        <ul>
-          <li>Data Center Management</li>
-          <li>Network System Design · Network Performance Analysis</li>
-          <li>System Virtualization and Cloud Management</li>
-          <li>Firewall Security · Computer Network Security</li>
-          <li>Routing and Switching Essentials</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>การอบรมและการทดสอบ</h3>
-        <div class="meta">ปวส. ไฟฟ้ากำลังและอิเล็กทรอนิกส์อุตสาหกรรม · วิทยาลัยอาชีวศึกษาจุฬามณี (2013–2015)</div>
-        <ul>
-          <li>MikroTik Networking and Security</li>
-          <li>Huawei HCIA Datacom, Security และ WLAN (หลักสูตรอบรม)</li>
-          <li>Cisco Networking Academy</li>
-          <li>IC3 Digital Literacy — ผ่าน (ธ.ค. 2024)</li>
-          <li>University English EXIT — ผ่าน (มี.ค. 2025)</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== PROCESS ===== -->
   <section>
     <div class="eyebrow">ขั้นตอนการทำงาน</div>
-    <h2 class="display">ทำงานเป็นระบบ ตรวจสอบได้</h2>
+    <h2 class="display">วิธีที่มักใช้ในการทำงาน</h2>
     <div class="steps">
       <div class="step"><h3>สำรวจ</h3><p>รับฟังปัญหาและตรวจระบบหน้างานหรือออนไลน์</p></div>
       <div class="step"><h3>วางแผน</h3><p>เสนอแนวทาง อุปกรณ์ ราคา และระยะเวลาให้ชัดเจน</p></div>
@@ -287,24 +409,10 @@
     </div>
   </section>
 
-  <!-- ===== ABOUT ===== -->
-  <!-- ใส่รูปตัวเอง: เปลี่ยน KY เป็น <img src="images/me.jpg" alt="Komsan Yinghan"> -->
-  <section id="about">
-    <div class="about">
-      <img src="images/me.jpg" alt="Komsan Yinghan">
-      <div>
-        <div class="eyebrow">เกี่ยวกับผม</div>
-        <h2 class="display" style="margin-bottom:20px">Komsan Yinghan</h2>
-        <p>ผมเริ่มต้นจากงานช่างไฟฟ้าและงานติดตั้งภาคสนาม ก่อนมาทำงาน IT Support ที่รีสอร์ทบนเกาะช้าง และศึกษาต่อจนจบวิศวกรรมคอมพิวเตอร์ ทำให้เข้าใจทั้งฝั่งฮาร์ดแวร์ ระบบไฟฟ้า และระบบเครือข่าย</p>
-        <p>ผมให้ความสำคัญกับระบบที่เสถียร ปลอดภัย และมีเอกสารประกอบครบถ้วน ปัจจุบันอยู่ที่จันทบุรี รับงานในพื้นที่ภาคตะวันออกและงานดูแลระยะไกล</p>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== CONTACT ===== -->
   <div class="contact" id="contact">
-    <h2 class="display">ระบบมีปัญหา หรืออยากวางระบบใหม่?</h2>
-    <p>ทักมาเล่ารายละเอียดได้เลยครับ ยินดีให้คำปรึกษา</p>
+    <h2 class="display">ขอบคุณสำหรับทุกความสนใจที่มีให้กับผม</h2>
+    <p>สามารถติดต่อได้ จากช่องทางด้านล่างนี้</p>
     <div class="cta">
       <a class="btn" href="mailto:sanfong0010@gmail.com">ส่งอีเมล</a>
       <a class="btn ghost" href="tel:0819085472">โทร 081-908-5472</a>
@@ -319,6 +427,56 @@
   <span>IT Infrastructure & Network Support</span>
 </footer>
 
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<dialog class="pdfmodal" id="pdfModal" aria-label="ดูใบรับรอง">
+  <div class="pdfbar">
+    <b id="pdfTitle">ใบรับรอง</b>
+    <a id="pdfOpen" href="#" target="_blank" rel="noopener">เปิดแท็บใหม่</a>
+    <button type="button" id="pdfClose">ปิด</button>
+  </div>
+  <iframe id="pdfFrame" title="ตัวอย่างใบรับรอง"></iframe>
+  <div class="imgwrap" id="imgWrap" hidden><img id="certImg" alt=""></div>
+</dialog>
+
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+
+/* ===== ใบรับรอง: ดึงไฟล์ PDF จากโฟลเดอร์ Certificate ===== */
+(function(){
+  var modal = document.getElementById('pdfModal');
+  var frame = document.getElementById('pdfFrame');
+  var title = document.getElementById('pdfTitle');
+  var openLink = document.getElementById('pdfOpen');
+  var imgWrap = document.getElementById('imgWrap');
+  var img = document.getElementById('certImg');
+  var hasDialog = !!modal.showModal;
+  var canEmbedPdf = hasDialog && navigator.pdfViewerEnabled !== false && !matchMedia('(max-width:720px)').matches;
+
+  document.querySelectorAll('a.view').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = a.getAttribute('href');
+      var isImg = /\.(png|jpe?g|webp)$/i.test(href);
+      if (isImg ? !hasDialog : !canEmbedPdf) return;   // ฝังไม่ได้ → เปิดแท็บใหม่ตามปกติ
+      e.preventDefault();
+      var li = a.closest('li, p');
+      var label = (li ? li.textContent : a.textContent).replace(a.textContent,'').trim();
+      title.textContent = a.dataset.title || label || a.textContent.trim();
+      openLink.href = href;
+      if (isImg) {
+        frame.hidden = true; imgWrap.hidden = false;
+        img.src = href; img.alt = label;
+      } else {
+        imgWrap.hidden = true; frame.hidden = false;
+        frame.src = href + '#view=FitH';
+      }
+      modal.showModal();
+    });
+  });
+
+  function close(){ modal.close(); }
+  modal.addEventListener('close', function(){ frame.src = 'about:blank'; img.removeAttribute('src'); });
+  document.getElementById('pdfClose').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+})();
+</script>
 </body>
 </html>
